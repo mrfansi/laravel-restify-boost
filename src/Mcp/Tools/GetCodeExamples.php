@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BinarCode\RestifyBoost\Mcp\Tools;
 
 use BinarCode\RestifyBoost\Services\DocIndexer;
-use Illuminate\JsonSchema\JsonSchema;
+use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\Server\Tool;
@@ -31,16 +31,16 @@ class GetCodeExamples extends Tool
                 ->description('The topic or feature you need code examples for (e.g., "repository", "field validation", "custom filter", "authentication")'),
             'language' => $schema->string()
                 ->description('Filter by programming language (php, javascript, json, yaml, etc.)')
-                ->optional(),
+,
             'category' => $schema->string()
                 ->description('Limit to specific documentation category: installation, repositories, fields, filters, auth, actions, performance, testing')
-                ->optional(),
+,
             'limit' => $schema->integer()
                 ->description('Maximum number of examples to return (default: 10, max: 25)')
-                ->optional(),
+,
             'include_context' => $schema->boolean()
                 ->description('Include surrounding documentation context for each example (default: true)')
-                ->optional(),
+,
         ];
     }
 

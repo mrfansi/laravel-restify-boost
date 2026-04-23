@@ -12,6 +12,7 @@ use BinarCode\RestifyBoost\Services\DocCache;
 use BinarCode\RestifyBoost\Services\DocIndexer;
 use BinarCode\RestifyBoost\Services\DocParser;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Mcp\Facades\Mcp;
 
 class RestifyBoostServiceProvider extends ServiceProvider
 {
@@ -39,8 +40,7 @@ class RestifyBoostServiceProvider extends ServiceProvider
             return;
         }
 
-        // TODO: Update MCP server registration for Laravel MCP 0.2
-        // Mcp::local('laravel-restify', RestifyDocs::class);
+        Mcp::local('laravel-restify', RestifyDocs::class);
 
         $this->registerPublishing();
         $this->registerCommands();

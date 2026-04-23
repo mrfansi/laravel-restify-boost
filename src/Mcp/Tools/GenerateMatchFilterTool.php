@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BinarCode\RestifyBoost\Mcp\Tools;
 
-use Illuminate\JsonSchema\JsonSchema;
+use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\Server\Tool;
@@ -31,19 +31,19 @@ class GenerateMatchFilterTool extends Tool
             'type' => $schema->string()
                 ->description('The match filter type')
                 ->enum(['string', 'int', 'integer', 'bool', 'boolean', 'datetime', 'between', 'array', 'custom'])
-                ->optional(),
+,
             'partial' => $schema->boolean()
                 ->description('Whether to use partial matching (LIKE queries) for text fields')
-                ->optional(),
+,
             'custom_logic' => $schema->string()
                 ->description('Custom filtering logic description for complex filters (only when type is custom)')
-                ->optional(),
+,
             'repository' => $schema->string()
                 ->description('The repository class name to add the filter to (optional)')
-                ->optional(),
+,
             'namespace' => $schema->string()
                 ->description('Custom namespace for the filter class')
-                ->optional(),
+,
         ];
     }
 

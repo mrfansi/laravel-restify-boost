@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BinarCode\RestifyBoost\Mcp\Tools;
 
 use BinarCode\RestifyBoost\Services\DocIndexer;
-use Illuminate\JsonSchema\JsonSchema;
+use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
 use Laravel\Mcp\Server\Tool;
@@ -37,19 +37,19 @@ Use multiple queries if unsure about terminology (e.g., ["validation", "validate
             'queries' => $schema->array()
                 ->description('List of search queries to perform. For questions like "how many types of filters", use ["filter types", "filtering", "match filters"]. For "available field types", use ["field types", "fields", "field methods"]. Pass multiple queries if you aren\'t sure about exact terminology.')
                 ->items($schema->string()->description('Search query string - extract key terms from user questions'))
-                ->minItems(1),
+                ->min(1),
             'question_type' => $schema->string()
                 ->description('Type of question being asked: "count" (how many types), "list" (what are available), "howto" (how to do something), "concept" (explain concept), "example" (show examples)')
-                ->optional(),
+,
             'category' => $schema->string()
                 ->description('Limit search to specific category: installation, repositories, fields, filters, auth, actions, performance, testing')
-                ->optional(),
+,
             'limit' => $schema->integer()
                 ->description('Maximum number of results to return per query (default: 10, max: 50)')
-                ->optional(),
+,
             'token_limit' => $schema->integer()
                 ->description('Maximum number of tokens to return in the response. Defaults to 10,000 tokens, maximum 100,000 tokens.')
-                ->optional(),
+,
         ];
     }
 

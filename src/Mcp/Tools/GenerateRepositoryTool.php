@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BinarCode\RestifyBoost\Mcp\Tools;
 
-use Illuminate\JsonSchema\JsonSchema;
+use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
@@ -35,19 +35,19 @@ class GenerateRepositoryTool extends Tool
                 ->description('Name of the Eloquent model to generate repository for (e.g., "User", "BlogPost")'),
             'include_fields' => $schema->boolean()
                 ->description('Generate fields from model database schema')
-                ->optional(),
+,
             'include_relationships' => $schema->boolean()
                 ->description('Generate relationships (BelongsTo/HasMany) from schema analysis')
-                ->optional(),
+,
             'repository_name' => $schema->string()
                 ->description('Override default repository name (default: {Model}Repository)')
-                ->optional(),
+,
             'namespace' => $schema->string()
                 ->description('Override default namespace (auto-detected from existing repositories)')
-                ->optional(),
+,
             'force' => $schema->boolean()
                 ->description('Overwrite existing repository file if it exists')
-                ->optional(),
+,
         ];
     }
 
